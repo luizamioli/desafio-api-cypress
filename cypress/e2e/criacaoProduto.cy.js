@@ -39,5 +39,8 @@ describe("Cenário: Criação de Produto", () => {
       cy.log("ID do produto: ", response.body.id);
       cy.compararCampos(response.body, novoProduto);
     });
+    after(() => {
+      cy.log("Teste inalizado.");
+    });
   });
 });

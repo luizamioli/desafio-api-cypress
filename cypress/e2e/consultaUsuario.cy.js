@@ -89,5 +89,9 @@ describe("Cenário: Consulta de usuário por ID", () => {
       expect(user.role).to.be.oneOf(["admin", "moderator", "user"]);
       expect(user.image).to.be.a("string");
     });
+
+    after(() => {
+      cy.log("Teste inalizado.");
+    });
   });
 });
