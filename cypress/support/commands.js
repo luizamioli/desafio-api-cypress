@@ -1,13 +1,12 @@
-Cypress.Commands.add("login", (username, password) => {
-  cy.request({
-    method: 'POST',
-    url: 'https://dummyjson.com/auth/login',
-    body: {
-      username,
-      password
-    }
-  }).then((response) => {
-    expect(response.status).to.eq(200)
-    // Você pode salvar o token, fazer validações, etc.
+Cypress.Commands.add("compararCampos", (resposta, respostaEsperada) => {
+  for (let campo in respostaEsperada) {
+    expect(resposta[campo], `Campo ${campo} deve ser igual`).to.equal(
+      respostaEsperada[campo]
+    );
+  }
+});
+Cypress.Commands.add("compararSubCampos", (objeto, esperado) => {
+  Object.entries(esperado).forEach(([chave, valor]) => {
+    expect(objeto[chave], `Campo ${chave} deve ser igual`).to.equal(valor);
   });
 });
